@@ -4,7 +4,7 @@ import { createApp, h } from 'vue';
 import { createInertiaApp, Link } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import {NotyfPlugin} from "@/plugins";
-import {Notyf} from "notyf";
+import { Components } from "@protonemedia/inertiajs-tables-laravel-query-builder";
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Valed';
 
@@ -22,3 +22,12 @@ createInertiaApp({
     },
 });
 InertiaProgress.init({ color: '#4B5563' });
+
+Components.Pagination.setTranslations({
+    no_results_found: "Görüntülenecek sonuç yok.",
+    previous: "Previous",
+    next: "Next",
+    to: "to",
+    of: "of",
+    results: "sonuç",
+});

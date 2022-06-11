@@ -2,7 +2,7 @@
     <Authenticated>
         <PageHeader :back-href="route('dashboard')" title="Kullanıcılar" sub-title="Sistemde kayıtlı tüm kullanıcılar">
             <template #actions>
-                <va-link class="mr-3" loading>Gs</va-link>
+                <va-link class="mr-3" loading><plus-icon></plus-icon> Yeni Ekle</va-link>
             </template>
         </PageHeader>
 
@@ -13,6 +13,14 @@
             :on-update="setQueryBuilder"
             :meta="page_users"
         >
+            <template v-slot:tableGlobalSearch="slotProps">
+                <div class="w-full">
+                    <va-input placeholder="Custom Global Search Component..."
+                              class="w-full h-[38px]"
+                              :value="slotProps.search.global.value"
+                              @input="slotProps.changeGlobalSearchValue($event.target.value)"></va-input>
+                </div>
+            </template>
             <template #head>
                 <tr>
                     <th @click.prevent="sortBy('first_name')">Ad</th>
@@ -115,6 +123,8 @@
 import Authenticated from "@/Layouts/Authenticated";
 import PageHeader from "@/Components/PageHeader";
 import VaLink from "@/Components/vaLink";
+import {PlusIcon} from "vue-tabler-icons"
+import VaInput from "@/Components/vaInput";
 
 defineProps({
     page_users: Object

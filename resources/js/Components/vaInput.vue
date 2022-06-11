@@ -47,28 +47,26 @@ onMounted(() => {
 <template>
     <div>
         <va-label v-if="label" :value="label" class="block font-medium text-sm text-gray-800" :class="{'required': required}" :for="id"> </va-label>
-        <div class="mt-1">
-            <div class="mb-1 relative rounded-md shadow-sm">
-                <input :id="id" ref="input"
-                       v-bind="$attrs"
-                       class="border-gray-300 focus:border-gray-300 focus:ring focus:border-gray-500
-                       placeholder-gray-500 placeholder-opacity-70
-                       focus:ring-gray-300 focus:ring-opacity-50 rounded-md shadow-sm"
-                       :class="{'border-red-500 focus:ring-red-300 focus:border-red-500': error}"
-                       :placeholder="placeholder"
-                       :autocomplete="autocomplete"
-                       :type="type"
-                       :required="required"
-                       :value="modelValue"
-                       @input="$emit('update:modelValue', $event.target.value)"/>
-                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <slot name="icon"></slot>
-                </div>
+        <div class="relative rounded-md shadow-sm">
+            <input :id="id" ref="input"
+                   v-bind="$attrs"
+                   class="border-gray-300 focus:border-gray-300 focus:ring focus:border-gray-500
+                   placeholder-gray-500 placeholder-opacity-70
+                   focus:ring-gray-300 focus:ring-opacity-50 rounded-md shadow-sm"
+                   :class="{'border-red-500 focus:ring-red-300 focus:border-red-500': error}"
+                   :placeholder="placeholder"
+                   :autocomplete="autocomplete"
+                   :type="type"
+                   :required="required"
+                   :value="modelValue"
+                   @input="$emit('update:modelValue', $event.target.value)"/>
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <slot name="icon"></slot>
             </div>
-            <input-error :message="error" />
-            <small v-if="hint" class="text-gray-600">
-                <span v-html="hint"></span>
-            </small>
         </div>
+        <input-error class="mt-1" :message="error" />
+        <small v-if="hint" class="mt-1 text-gray-600">
+            <span v-html="hint"></span>
+        </small>
     </div>
 </template>

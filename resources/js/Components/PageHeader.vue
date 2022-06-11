@@ -38,9 +38,8 @@ defineProps({
             <div class="sm:ml-3">
                <slot name="actions"></slot>
                 <va-link v-if="backHref" :href="backHref" class="ml-3">
-                    <template #icon>
-                        <ChevronLeftIcon class="-ml-1 mr-2 h-4 w-4" aria-hidden="true" />
-                    </template>
+
+                    <ChevronLeftIcon   aria-hidden="true" />
                     {{backText}}
                 </va-link>
             </div>

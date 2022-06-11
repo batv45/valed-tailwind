@@ -30,3 +30,10 @@ a.va-button.va-link-disabled {
     cursor: default;
     @apply bg-gray-600 hover:bg-gray-600
 }
+
+.icon {
+    @apply -ml-1 mr-2 h-5 w-5
+}
+.va-button-loading   .icon {
+    display: none;
+}

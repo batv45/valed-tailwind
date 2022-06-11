@@ -15,7 +15,9 @@ class UserController extends Controller
     {
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
-                $query->where('name', 'LIKE', "%{$value}%")->orWhere('email', 'LIKE', "%{$value}%");
+                $query->where('first_name', 'LIKE', "%{$value}%")
+                    ->orWhere('last_name', 'LIKE', "%{$value}%")
+                    ->orWhere('email', 'LIKE', "%{$value}%");
             });
         });
 
