@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Laracasts\Flash\Message;
@@ -37,7 +38,7 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'auth' => [
-                'user' => $request->user(),
+                'user' => new UserResource($request->user()),
             ],
             'flash' => fn () => collect($request->session()->get('flash_notification'))
                 ->transform(function(Message $arr){
