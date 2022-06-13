@@ -27,9 +27,11 @@
     "dependencies": {
         "@headlessui/vue": "^1.6.4",
         "@heroicons/vue": "^1.0.6",
+        "@popperjs/core": "^2.11.5",
         "@protonemedia/inertiajs-tables-laravel-query-builder": "^1.3.4",
         "notyf": "^3.10.0",
         "uuid": "^8.3.2",
-        "vue-tabler-icons": "^2.6.0"
+        "vue-tabler-icons": "^2.6.0",
+        "vue-tippy": "^6.0.0-alpha.58"
     }
 }

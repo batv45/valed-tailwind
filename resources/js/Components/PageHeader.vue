@@ -30,12 +30,12 @@ defineProps({
     <div class="lg:flex lg:items-center lg:justify-between mb-5">
         <div class="flex-1 min-w-0">
             <h1 class="text-xl font-semibold text-gray-900">{{title}}</h1>
-            <p class="mt-2 text-sm text-gray-700">
+            <p class="mt-2 text-sm text-gray-700 flex">
                 <slot name="sub-title">{{subTitle}}</slot>
             </p>
         </div>
         <div class="mt-5 flex lg:mt-0 lg:ml-4">
-            <div class="sm:ml-3">
+            <div class="sm:ml-3 flex">
                <slot name="actions"></slot>
                 <va-link v-if="backHref" :href="backHref" class="ml-3">
 

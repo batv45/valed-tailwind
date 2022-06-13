@@ -41,7 +41,7 @@ Route::group([ 'middleware' => 'auth' ],function(){
 //endregion
 
 //region User
-Route::group([ 'middleware' => 'auth' ],function(){
+Route::group([ 'middleware' => ['auth', 'verified'] ],function(){
     Route::resource('user',\App\Http\Controllers\User\UserController::class);
 });
 //endregion

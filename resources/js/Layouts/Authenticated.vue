@@ -3,30 +3,31 @@ import { ref } from 'vue'
 import {
     Dialog,
     DialogOverlay,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
     TransitionChild,
     TransitionRoot,
 } from '@headlessui/vue'
 import {
     BellIcon,
-    CalendarIcon,
-    ChartBarIcon,
-    FolderIcon,
-    HomeIcon,
-    InboxIcon,
     MenuAlt2Icon,
     XIcon,
 } from '@heroicons/vue/outline'
-import { SearchIcon } from '@heroicons/vue/solid'
+import { UserSearchIcon } from 'vue-tabler-icons'
 import BreezeApplicationLogo from "@/Components/ApplicationLogo"
 import {Link} from "@inertiajs/inertia-vue3"
 import NavMenu from "./Components/NavMenu"
 import NavUserMenu from "@/Layouts/Components/NavUserMenu";
+import {Inertia} from "@inertiajs/inertia";
 
 const sidebarOpen = ref(false)
+
+const query = ref()
+
+const submitSearch = () => {
+    Inertia.get(encodeURI(route('user.index',{
+        'filter[global]':query.value
+    })))
+}
+
 </script>
 
 <template>
@@ -91,13 +92,15 @@ const sidebarOpen = ref(false)
                 </button>
                 <div class="flex-1 px-4 flex justify-between">
                     <div class="flex-1 flex">
-                        <form class="w-full flex md:ml-0" action="#" method="GET">
+                        <form class="w-full flex md:ml-0" @submit.prevent="submitSearch">
                             <label for="search-field" class="sr-only">Search</label>
                             <div class="relative w-full text-gray-400 focus-within:text-gray-600">
                                 <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
-                                    <SearchIcon class="h-5 w-5" aria-hidden="true" />
+                                    <UserSearchIcon class="h-5 w-5" aria-hidden="true" />
                                 </div>
-                                <input id="search-field" class="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm" placeholder="Search" type="search" name="search" />
+                                <input v-model="query" id="search-field" class="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400
+                                focus:ring-0 focus:border-transparent sm:text-sm"
+                                       placeholder="Kullanıcı Ara" type="search" name="search" autocomplete="off" />
                             </div>
                         </form>
                     </div>
